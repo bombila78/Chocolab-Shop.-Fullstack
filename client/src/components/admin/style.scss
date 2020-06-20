@@ -1,0 +1,150 @@
+/*Обнуление*/
+*{padding: 0;margin: 0;border: 0;}
+*,*:before,*:after{-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+nav,footer,header,aside{display: block;}
+html,body{height:100%;width:100%;font-size:100%;line-height:1;font-size:14px;-ms-text-size-adjust:100%;-moz-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+input,button,textarea{font-family:inherit;}
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner{padding:0;border:0;}
+a,a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
+/*--------------------*/
+
+@font-face {
+	font-family: 'Raleway';
+	src: url('../../fonts/Raleway-Bold.eot');
+	src: local('☺'), url('../../fonts/Raleway-Bold.woff') format('woff'), url('../../fonts/Raleway-Bold.ttf') format('truetype'), url('../../fonts/Raleway-Bold.svg') format('svg');
+	font-weight: 700;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Raleway';
+	src: url('../../fonts/Raleway-Medium.eot');
+	src: local('☺'), url('../../fonts/Raleway-Medium.woff') format('woff'), url('../../fonts/Raleway-Medium.ttf') format('truetype'), url('../../fonts/Raleway-Medium.svg') format('svg');
+	font-weight: 500;
+	font-style: normal;
+}
+
+
+
+body {
+    font-family: "Raleway";
+    font-weight: 500;
+    transition: 300ms;
+}
+
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.header {
+    margin-bottom: 50px;
+}
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 50px;
+    font-size: 18px;
+    font-family: "Raleway";
+    font-weight: 500;
+    a {
+        color: black;
+        &:hover {
+            color: black;
+        }
+    }
+    &-brand {
+        font-size: 34px;
+        font-weight: 500;
+        letter-spacing: 0.5rem;
+        text-transform: uppercase;
+        span {
+            font-size: 40px;
+        }
+    }
+    &-nav {
+        flex-direction: row;
+        li {
+            margin: 0 50px;
+            a {
+                font-size: 14px;
+                text-transform: uppercase;
+                &:hover {
+                    color: rgb(255, 185, 100);
+                }
+            }
+        }
+    }
+}
+
+.add-good-form {
+    margin: 50px 0px;
+    button {
+        padding: 15px;
+        background-color:  rgb(255, 185, 100);
+        margin-top: 20px;
+        border-radius: 20px;
+        color: white;
+    }
+    h2 {
+        text-align: center;
+        font-size: 36px;
+        font-weight: 700;
+        }
+}
+
+.goods-list {
+    h2 {
+        text-align: center;
+        font-size: 36px;
+        font-weight: 700;
+    }
+}
+
+.goodlistitem__card {
+    background-color: rgb(246, 246, 246);
+    margin: 20px 0;
+    padding: 20px 0;
+    &_info {
+        font-size: 20px;
+        width: 25%;
+        p {
+            margin:30px 0;
+        }
+        
+    }
+    &_image {
+        height:300px;
+        width: 400px;
+        img {
+            width: 100%;
+            height: 100%
+        }
+    }
+    button {
+        padding: 15px;
+        border-radius: 20px;
+    }
+}
+
+.card {
+    width: 18rem;
+    &-title {
+        font-weight: 700;
+        font-size: 20px;
+    }
+    &-price {
+        span {
+            font-weight: 700;
+            font-size: 18px;
+        }
+    }
+}
