@@ -9,6 +9,9 @@ const Header = () => {
                 <Link className="navbar-brand" to="/admin"><span>C</span>hoco<span>L</span>ab<span>A</span>dmin</Link>
                 <ul className="navbar-nav">
                     <li className="navbar-item">
+                        <Link className="nav-link" to="/">В магазин</Link>
+                    </li>
+                    <li className="navbar-item">
                         <Link className="nav-link" to="/admin">Добавление товара</Link>
                     </li>
                     <li className="navbar-item">
