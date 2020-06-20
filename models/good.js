@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
 
-    const Goods = sequelize.define('Good', {
+    const Good = sequelize.define('Good', {
         name: {
             type: DataTypes.STRING,
             allowNull: false
@@ -8,10 +8,6 @@ module.exports = (sequelize, DataTypes) => {
         info: {
             type: DataTypes.STRING,
             allowNull: true
-        },
-        kind: {
-            type: DataTypes.STRING,
-            allowNull: false
         },
         price: {
             type: DataTypes.INTEGER,
@@ -24,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     })
 
     Good.associate = models => {
-        Goods.belongsTo(models.Category, {
+        Good.belongsTo(models.Category, {
             foreignKey: {
                 allowNull: false
             }
