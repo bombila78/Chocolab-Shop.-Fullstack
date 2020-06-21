@@ -11,6 +11,7 @@ app.use(express.json());
 app.use('/api/chocolab', Routes)
 
 app.use('/api/categories', require('./routes/categoriesRoutes'))
+app.use('/api/goods', require('./routes/goodsRoutes'))
 
 app.get('*', (req, res, next) => {
     res.sendFile(path.join(__dirname + '/client/build/index.html'))
@@ -19,7 +20,7 @@ app.get('*', (req, res, next) => {
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
+    return Math.floor(Math.random() * (max - min)) + min;
 }
 
 const generateLoremData = async (index) => {
@@ -53,6 +54,6 @@ db.sequelize.sync({alter: true}).then(() => {
     // }
 
     app.listen(PORT, () => {
-        console.log(`Defenders server running at port ${PORT}`)
+        console.log(`Chocolab-shop server running at port ${PORT}`)
     })
 })
