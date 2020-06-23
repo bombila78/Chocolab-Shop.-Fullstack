@@ -1,30 +1,23 @@
-const Sequelize = require('sequelize');
-const sequelize = require('../utils/database');
-const good = require('./goods');
+module.exports = (sequelize, DataTypes) => {
 
-const order = sequelize.define('Order', {
-    id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-        allowNull: false
-    },
-    goods: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    total: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-    },
-    clientName: {
-        type: Sequelize.STRING,
-        allowNull: false 
-    },
-    clientPhone: {
-        type: Sequelize.STRING,
-        allowNull: false
-    }
-})
+    const Order = sequelize.define('Order', {
+        goods: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        total: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        clientName: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        clientPhone: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }
+    })
 
-module.exports = order;
+    return Order
+}
