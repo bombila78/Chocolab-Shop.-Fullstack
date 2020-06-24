@@ -342,72 +342,68 @@ body {
 
 
 .goodlist {
-    &__buttonGroup {
-        margin: 50px 0;
-        display: flex;
-        justify-content: center;
-        &_button {
-        padding: 15px 30px;
-        margin: 0 20px;
-        border: 2px solid lightgrey;
-        background: transparent;
-        border-radius: 30px;
-        &:hover {
-            border: 2px solid rgb(255, 185, 100);
-            background: rgb(255, 185, 100);
-            color: white;
-        }
-        &:focus {
-            outline: none;
-        }
-        &.chosen {
-            border: 2px solid rgb(255, 185, 100);
-            background: rgb(255, 185, 100);
-            color: white;
-        }
-        }
-    }
     h2 {
         text-align: center;
         font-size: 36px;
         font-weight: 700;
     }
+    &_buttonGroup {
+        justify-content: center;
 
-}
-.goodlistitem__card {
-    background-color: rgb(246, 246, 246);
-    margin: 20px 0;
-    padding: 20px 0;
-    &_info {
-        font-size: 20px;
-        width: 25%;
-        p {
-            margin:30px 0;
-        }
-        
     }
     &_button {
+        margin: 15px;
         padding: 15px 30px;
         border: 2px solid lightgrey;
         background: transparent;
         border-radius: 30px;
-        
         &:hover {
             border: 2px solid rgb(255, 185, 100);
             background: rgb(255, 185, 100);
             color: white;
         }
         &:focus {
+            border: 2px solid rgb(255, 185, 100);
+            background: rgb(255, 185, 100);
+            color: white;
             outline: none;
         }
     }
+    &_category {
+        margin: 20px 0;
+        padding: 10px;
+        background-color: rgb(255, 185, 100);
+        h3 {
+            font-size: 20px;
+            font-weight: 700;
+            text-align: left;
+        }
+    }
+}
+
+.goodlistitem__card {
+    background-color: rgb(246, 246, 246);
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 10px;
+    &_info {
+        font-size: 20px;
+        text-align: left;
+        p {
+            margin:30px 0;
+        }    
+    }
     &_image {
-        height:300px;
-        width: 400px;
+        width: 100%;
         img {
             width: 100%;
             height: 100%
         }
+    }
+    button {
+        padding: 15px 30px;
+        background-color: rgb(255, 185, 100);
+        color: white; 
     }
 }
 

@@ -1,12 +1,16 @@
 const updateOrder = (state, bookId, quantity) => {
-    const {goodsList: {goods}, cartItems} = state;
-
-    const good = goods.find((good) => good.id === bookId);
-    const itemIndex = cartItems.findIndex(({id}) => id === bookId);
+    const { goodsList: { goods }, cartItems } = state;
+    const goodsArray = [];
+    for (let cat of goods) {
+        const { Goods } = cat;
+        goodsArray.push(...Goods)
+    }
+    const good = goodsArray.find((good) => good.id === bookId);
+    const itemIndex = cartItems.findIndex(({ id }) => id === bookId);
     const item = cartItems[itemIndex];
 
     const newItem = updateCartItem(good, item, quantity);
-    
+
     return {
         goodsList: {
             ...state.goodsList
@@ -18,27 +22,27 @@ const updateOrder = (state, bookId, quantity) => {
 const updateCartItem = (good, item = {}, quantity) => {
     const {
         id = good.id,
-         name = good.name + ' ' + good.info,
-          count = 0,
-           total = 0
-        } = item;
+        name = good.name,
+        count = 0,
+        total = 0
+    } = item;
 
     return {
         id,
         name,
         count: count + quantity,
-        total: total + quantity*good.price
+        total: total + quantity * good.price
     }
 }
 
 const updateCartItems = (cartItems, item, idx) => {
-    if(item.count === 0) {
+    if (item.count === 0) {
         return [
             ...cartItems.slice(0, idx),
             ...cartItems.slice(idx + 1)
         ]
     }
-    if(idx === -1) {
+    if (idx === -1) {
         return [
             ...cartItems,
             item
@@ -59,8 +63,7 @@ const updateGoodList = (state, action) => {
             goodsList: {
                 goods: [],
                 loading: true,
-                error: null,
-                filter: 'all',
+                error: null
             },
             cartItems: []
         }
@@ -71,8 +74,7 @@ const updateGoodList = (state, action) => {
                 goodsList: {
                     goods: [],
                     loading: true,
-                    error: null,
-                    filter: 'all'
+                    error: null
                 },
                 cartItems: [...state.cartItems]
             };
@@ -81,8 +83,7 @@ const updateGoodList = (state, action) => {
                 goodsList: {
                     goods: action.payload,
                     loading: false,
-                    error: null,
-                    filter: 'all'
+                    error: null
                 },
                 cartItems: [...state.cartItems]
             }
@@ -91,53 +92,17 @@ const updateGoodList = (state, action) => {
                 goodsList: {
                     goods: [],
                     loading: false,
-                    error: action.payload,
-                    filter: 'all'
+                    error: action.payload
                 },
                 cartItems: [...state.cartItems]
             }
-        case 'FILTER_ALL': {
-            return {
-                goodsList: {
-                    ...state.goodsList,
-                    filter: 'all'
-                },
-                cartItems: [...state.cartItems]
-            }
-        }
-        case 'FILTER_CHOCO': {
-            return {
-                goodsList: {
-                    ...state.goodsList,
-                    filter: 'choco'
-                },
-                cartItems: [...state.cartItems]
-            }
-        }
-        case 'FILTER_INGRED': {
-            return {
-                goodsList: {
-                    ...state.goodsList,
-                    filter: 'ingred'
-                },
-                cartItems: [...state.cartItems]
-            }
-        }
-        case 'FILTER_BOX': {
-            return {
-                goodsList: {
-                    ...state.goodsList,
-                    filter: 'box'
-                },
-                cartItems: [...state.cartItems]
-            }
-        }
-        case 'ADD_TO_CART': 
-           return updateOrder(state, action.payload, 1)
+
+        case 'ADD_TO_CART':
+            return updateOrder(state, action.payload, 1)
         case 'REMOVE_FROM_CART':
-            return updateOrder(state, action.payload, -1)   
+            return updateOrder(state, action.payload, -1)
         case 'DELETE_FROM_CART': {
-            const item = state.cartItems.find(({id}) => id === action.payload);
+            const item = state.cartItems.find(({ id }) => id === action.payload);
             return updateOrder(state, action.payload, -item.count)
         }
         case 'CLEAR_CART':
@@ -146,7 +111,7 @@ const updateGoodList = (state, action) => {
                     ...state.goodsList
                 },
                 cartItems: []
-            } 
+            }
 
         default:
             return state

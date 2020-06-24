@@ -10,10 +10,11 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(express.json());
 
-app.use('/api/chocolab', Routes)
+
 
 app.use('/api/categories', require('./routes/categoriesRoutes'))
 app.use('/api/goods', require('./routes/goodsRoutes'))
+app.use('/api/orders', require('./routes/ordersRoutes'))
 
 app.get('*', (req, res, next) => {
     res.sendFile(path.join(__dirname + '/client/build/index.html'))
@@ -25,29 +26,29 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-const generateLoremData = async (index) => {
+// const generateLoremData = async (index) => {
 
-    const category = await db.Category.create({
-        title: "Category " + index
-    })
+//     const category = await db.Category.create({
+//         title: "Category " + index
+//     })
 
-    for (let i = 10; i > 0; i--) {
+//     for (let i = 10; i > 0; i--) {
 
-        const good = await db.Good.create({
-            name: "Good chocolate " + index,
-            info: "Lorem ipsum dolor sit amet! " + index,
-            price: 3987,
-            imageURL: "image" + index + ".jpg",
-            CategoryId: category.id
-        })
+//         const good = await db.Good.create({
+//             name: "Good chocolate " + index,
+//             info: "Lorem ipsum dolor sit amet! " + index,
+//             price: 3987,
+//             imageURL: "image" + index + ".jpg",
+//             CategoryId: category.id
+//         })
 
-        console.log(`----------- Good ${good.name} created -----------`)
+//         console.log(`----------- Good ${good.name} created -----------`)
 
-    }
+//     }
 
-    console.log(`----------- Category ${category.title} created -----------`)
+//     console.log(`----------- Category ${category.title} created -----------`)
 
-}
+// }
 
 db.sequelize.sync({alter: true}).then(() => {
 
@@ -56,10 +57,8 @@ db.sequelize.sync({alter: true}).then(() => {
     // }
 
     app.listen(PORT, () => {
-<<<<<<< HEAD
-        console.log(`Chocolab server running at port ${PORT}`)
-=======
+
         console.log(`Chocolab-shop server running at port ${PORT}`)
->>>>>>> b22d0aa3677937044e795bea8348371ddf386123
+
     })
 })

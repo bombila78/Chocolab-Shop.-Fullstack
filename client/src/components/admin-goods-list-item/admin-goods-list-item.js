@@ -1,24 +1,26 @@
 import React from 'react';
 
-const GoodsListItem = ({good, removeGood}) => {
+const GoodsListItem = ({ good, removeGood }) => {
 
-    const {name, info, price, imageURL, kind} = good
+    const { name, price, imageURL } = good;
+
+    const toCurrency = price => { //функция для форматирования в валюту
+        return new Intl.NumberFormat('ru-RU', {
+            currency: 'rub',
+            style: 'currency'
+        }).format(price)
+    }
 
     return (
-        <div className="goodlistitem">
-            <div className="container">
-                <div className="goodlistitem__card row justify-content-around">
-                    <div className="goodlistitem__card_info">
-                        <p><span>Товар -</span> {name}</p>
-                        <p><span>Название -</span> {info}</p>
-                        <p><span>Вид -</span> {kind}</p>
-                        <p><span>Цена -</span> {price} руб.</p>
-                        <button className="btn btn-danger" onClick={removeGood}>Удалить</button>
-                    </div>
-                    <div className="goodlistitem__card_image">
-                        <img src={imageURL} alt="choco" />
-                    </div>
-                    
+        <div className="col-md-4">
+            <div className="admin-goodlistitem__card">
+            <div className="admin-goodlistitem__card_image">
+                    <img src={imageURL} alt="choco" />
+                </div>
+                <div className="admin-goodlistitem__card_info">
+                    <p><span>Товар -</span> {name}</p>
+                    <p><span>Цена -</span> {toCurrency(price)}</p>
+                    <button className="btn btn-danger" onClick={removeGood}>Удалить</button>
                 </div>
             </div>
         </div>

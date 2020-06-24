@@ -30,7 +30,7 @@ const CartPage = ({ cartItems, onIncrease, onDecrease, onDelete, onClear }) => {
         }
 
         axios
-            .post('/api/chocolab/order', order)
+            .post('/api/orders', order)
             .catch(e => console.log(e));
 
         setName('');

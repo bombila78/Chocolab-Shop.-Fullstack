@@ -18,31 +18,8 @@ const goodsError = (error) => {
     }
 }
 
-const filterAll = () => {
-    return {
-        type: 'FILTER_ALL'
-    }
-}
-
-const filterChoco = () => {
-    return {
-        type: 'FILTER_CHOCO'
-    }
-}
-
-const filterIngred = () => {
-    return {
-        type: 'FILTER_INGRED'
-    }
-}
-
-const filterBox = () => {
-    return {
-        type: 'FILTER_BOX'
-    }
-}
-
 const addToCart = (goodId) => {
+    console.log(goodId)
     return {
         type: 'ADD_TO_CART',
         payload: goodId
@@ -76,10 +53,6 @@ export {
     goodsRequested,
     goodsLoaded,
     goodsError,
-    filterAll,
-    filterChoco,
-    filterIngred,
-    filterBox,
     addToCart,
     removeFromCart,
     deleteFromCart,

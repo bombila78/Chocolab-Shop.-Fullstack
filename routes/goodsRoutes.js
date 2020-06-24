@@ -21,7 +21,7 @@ router.get('/all', async (req, res) => {
         res.setHeader('total', total);
     
         res.status(200).json(result);
-        
+
     } catch (e) {
         console.log(e)
         res.status(500).json({
@@ -29,6 +29,66 @@ router.get('/all', async (req, res) => {
         })
     }
 
+})
+
+router.get('/:id', async (req, res) => {
+
+    try {
+        const good = await db.Good.findByPk(+req.params.id);
+
+        res.status(200).json(good);
+    } catch (e) {
+        console.log(e)
+        res.status(500).json({
+            message: 'Server Error'
+        })
+    }
+})
+
+router.post('/', async (req, res) => {
+    
+    try {
+        const { name, info, category, price, imageURL } = req.body;
+
+        const CategoryId = await db.Category
+        .findOne({where: {title: category}})
+        .then(category => {
+            return category.id
+        })
+
+        const good = await db.Good.create({
+            name,
+            info,
+            CategoryId,
+            price,
+            imageURL
+        })
+
+        res.status(201).json(good);
+
+    } catch (e) {
+        console.log(e)
+        res.status(500).json({
+            message: 'Server Error'
+        })
+    }
+})
+
+router.delete('/:id', async (req, res) => {
+
+    try {
+        const good = await db.Good.findByPk(+req.params.id);
+
+        await good.destroy();
+
+        res.status(204).json({})
+        
+    } catch (e) {
+        console.log(e)
+        res.status(500).json({
+            message: 'Server Error'
+        })
+    }
 })
 
 

@@ -3,99 +3,74 @@ import GoodsListItem from '../goods-list-item/goods-list-item';
 import { withChocolabService } from '../hoc/with-chocolab-service';
 import { compose } from '../../utils'
 import { connect } from 'react-redux';
-import { goodsRequested, goodsLoaded, goodsError, filterAll, filterChoco, filterIngred, filterBox, addToCart } from '../../actions';
+import { goodsRequested, goodsLoaded, goodsError, addToCart } from '../../actions';
 import { bindActionCreators } from 'redux';
-
-const chosenBut = "goodlist__buttonGroup_button chosen"
-const notChosenBut = "goodlist__buttonGroup_button"
-let allClass
-let chocoClass
-let ingredClass
-let boxClass
-let chocoHidden
-let ingredHidden
-let boxHidden
 
 class GoodsList extends React.Component {
 
+    state = {
+        filter: 'all'
+    }
+
     componentDidMount() {
-        const { goodsRequested, goodsLoaded, goodsError, chocolabService } = this.props
+        const { goodsRequested, goodsLoaded, goodsError } = this.props
         goodsRequested();
-        fetch('/api/chocolab/', {
+        fetch('/api/categories/all', {
             method: 'get'
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 goodsLoaded(data)
             })
             .catch((err) => goodsError(err))
 
     }
 
+    changeFilter = (title) => {
+        this.setState({ filter: title })
+    }
+
     render() {
 
-        const { goods, loading, error, filter, filterAll, filterChoco, filterIngred, filterBox, addToCart } = this.props;
+        const { categoriesAndGoods, loading, error, addToCart } = this.props;
+
+        const categoriesButtonsGroup = categoriesAndGoods.map(categ => {
+            const { title } = categ;
+
+            return <button className="goodlist_button" onClick={() => this.changeFilter(title)}>{title}</button>
+
+        })
+
+        let filteredCats = [];
+
+        const {filter} = this.state
 
         if (filter === 'all') {
-            allClass = chosenBut
-            chocoClass = notChosenBut
-            ingredClass = notChosenBut
-            boxClass = notChosenBut
-            chocoHidden = false
-            ingredHidden = false
-            boxHidden = false
-        } else if (filter === 'choco') {
-            allClass = notChosenBut
-            chocoClass = chosenBut
-            ingredClass = notChosenBut
-            boxClass = notChosenBut
-            chocoHidden = false
-            ingredHidden = true
-            boxHidden = true
-        } else if (filter === 'ingred') {
-            allClass = notChosenBut
-            chocoClass = notChosenBut
-            ingredClass = chosenBut
-            boxClass = notChosenBut
-            chocoHidden = true
-            ingredHidden = false
-            boxHidden = true
-        } else if (filter === 'box') {
-            allClass = notChosenBut
-            chocoClass = notChosenBut
-            ingredClass = notChosenBut
-            boxClass = chosenBut
-            chocoHidden = true
-            ingredHidden = true
-            boxHidden = false
+            filteredCats = [...categoriesAndGoods]
+        } else {
+            filteredCats = categoriesAndGoods.filter(c => c.title === filter)
         }
 
-        const chocoElems = goods.map((good) => {
-            const { id, kind } = good;
-            if (kind === "choco") {
-                return <li key={id}><GoodsListItem good={good} addToCart={() => addToCart(id)} /></li>
-            }
+        const allCatsAndGoods = filteredCats.map(category => {
+            
+            const { title, Goods } = category;
 
+            const allGoodsOfCat = Goods.map(good => {
+                const { id } = good;
+                return <GoodsListItem  good={good} addToCart={() => addToCart(id)} />
+            })
+
+            return (
+                <div key={title} className="goodlist_category">
+                    <div className="row justify-content-center">
+                    <h3>{title}</h3>
+                    </div>
+                    <div className="row">
+                        {allGoodsOfCat}
+                    </div>
+                </div>
+            )
         })
-
-        const ingredElems = goods.map((good) => {
-            const { id, kind } = good;
-            if (kind === "ingred") {
-                return <li key={id}><GoodsListItem good={good} addToCart={() => addToCart(id)} /></li>
-            }
-
-        })
-
-        const boxElems = goods.map((good) => {
-            const { id, kind } = good;
-            if (kind === "box") {
-                return <li key={id}><GoodsListItem good={good} addToCart={() => addToCart(id)} /></li>
-            }
-
-        })
-
-
 
         if (loading) {
             return <div>LOADING...........</div>
@@ -107,42 +82,26 @@ class GoodsList extends React.Component {
 
         return (
             <div className="goodlist">
-                <div className="goodlist__buttonGroup">
-                    <button className={allClass} onClick={filterAll}>ВСЕ ТОВАРЫ</button>
-                    <button className={chocoClass} onClick={filterChoco}>ШОКОЛАД</button>
-                    <button className={ingredClass} onClick={filterIngred}>ИНГРЕДИЕНТЫ</button>
-                    <button className={boxClass} onClick={filterBox}>ФОРМЫ</button>
-                </div>
-                <div className="goodList__choco" hidden={chocoHidden}>
-                    <h2>ШОКОЛАД</h2>
-                    <ul className="goodlist__list">
-                        {chocoElems}
-                    </ul>
-                </div>
-                <div className="goodList__ingred" hidden={ingredHidden}>
-                    <h2>ИНГРЕДИЕНТЫ</h2>
-                    <ul className="goodlist__list">
-                        {ingredElems}
-                    </ul>
-                </div>
-                <div className="goodList__box" hidden={boxHidden}>
-                    <h2>ФОРМЫ</h2>
-                    <ul className="goodlist__list">
-                        {boxElems}
-                    </ul>
+                <div className="container">
+                <h2>КАТАЛОГ</h2>
+                    <div className="goodlist__buttonGroup">
+                        <button className="goodlist_button" onClick={() => this.changeFilter('all')}>Показать все</button>
+                        {categoriesButtonsGroup}
+                    </div>
+                        {allCatsAndGoods}
                 </div>
             </div>
         )
     }
 }
 
-const mapStateToProps = ({ goodsList: { goods, loading, error, filter } }) => {
-    return { goods, loading, error, filter }
+const mapStateToProps = ({ goodsList: { goods, loading, error } }) => {
+    return { categoriesAndGoods: goods, loading, error }
 };
 
 const mapDispatchToProps = (dispatch) => {
 
-    return bindActionCreators({ goodsRequested, goodsLoaded, goodsError, filterAll, filterChoco, filterIngred, filterBox, addToCart }, dispatch)
+    return bindActionCreators({ goodsRequested, goodsLoaded, goodsError, addToCart }, dispatch)
 }
 
 

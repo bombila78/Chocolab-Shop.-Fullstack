@@ -8,7 +8,7 @@ export default class OrdersList extends React.Component {
     }
 
     componentDidMount = () => {
-        fetch('/api/chocolab/orders', {
+        fetch('/api/orders/all', {
             method: 'get'
         })
             .then(res => res.json())
@@ -21,7 +21,7 @@ export default class OrdersList extends React.Component {
     removeOrder = (id) => {
         const {orders} = this.state;
         
-        fetch('/api/chocolab/orders/' + id, {
+        fetch('/api/orders/' + id, {
             method : 'delete'
         })
         .then(() => {
