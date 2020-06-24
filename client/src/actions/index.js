@@ -19,7 +19,6 @@ const goodsError = (error) => {
 }
 
 const addToCart = (goodId) => {
-    console.log(goodId)
     return {
         type: 'ADD_TO_CART',
         payload: goodId

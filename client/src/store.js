@@ -1,6 +1,18 @@
-import {createStore} from 'redux';
-import updateGoodList from '../src/reducers/good-list-reducer';
+import {  createStore } from 'redux';
+import chocolab from '../src/reducers/index';
+import { loadState, saveState } from './localstorage/localstorage';
 
-const store = createStore(updateGoodList);
+import {save, load} from 'redux-localstorage-simple'
+
+
+
+
+const store = createStore(chocolab, loadState());
+
+store.subscribe(() => {
+    saveState({
+        cart: store.getState().cart
+    })
+})
 
 export default store;

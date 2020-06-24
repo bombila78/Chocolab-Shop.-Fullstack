@@ -1,11 +1,11 @@
-import updateGoodList from './good-list-reducer';
-import updateCart from './cart-reducer'
+import goods from './goods'
+import cart from './cart'
 
-
-const reducer = (state, action) => {
+const chocolab = (state, action) => {
     return {
-        goodslist: updateGoodList(state, action)
+        goods: goods(state, action),
+        cart: cart(state, action)
     }
 }
 
-export default reducer;
+export default chocolab

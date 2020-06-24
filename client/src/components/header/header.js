@@ -41,7 +41,7 @@ const Header = ({cartItems}) => {
     )
 }
 
-const mapStateToProps = ({cartItems}) => {
+const mapStateToProps = ({cart: {cartItems}}) => {
     return {cartItems}
 }
 

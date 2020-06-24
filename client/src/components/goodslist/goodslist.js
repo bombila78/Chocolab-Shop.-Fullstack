@@ -95,7 +95,7 @@ class GoodsList extends React.Component {
     }
 }
 
-const mapStateToProps = ({ goodsList: { goods, loading, error } }) => {
+const mapStateToProps = ({ goods: { goodsList: {goods, loading, error}} }) => {
     return { categoriesAndGoods: goods, loading, error }
 };
 

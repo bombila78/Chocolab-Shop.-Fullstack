@@ -113,8 +113,7 @@ const CartPage = ({ cartItems, onIncrease, onDecrease, onDelete, onClear }) => {
     )
 }
 
-
-const mapStateToProps = ({ cartItems }) => {
+const mapStateToProps = ({ cart: { cartItems }}) => {
     return { cartItems }
 }
 
