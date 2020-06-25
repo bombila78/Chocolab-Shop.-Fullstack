@@ -19,18 +19,24 @@ export default class OrdersList extends React.Component {
 
 
     removeOrder = (id) => {
-        const {orders} = this.state;
+
+        const confirmed = window.confirm("Вы уверены что хотите удалить заказ из базы?")
+
+         if (confirmed) {
+            const {orders} = this.state;
         
-        fetch('/api/orders/' + id, {
-            method : 'delete'
-        })
-        .then(() => {
-            const newOrders = orders.filter(o => o.id !== id)
-            this.setState({
-                orders: newOrders
+            fetch('/api/orders/' + id, {
+                method : 'delete'
             })
-        })
-        .catch(e => console.log(e))
+            .then(() => {
+                const newOrders = orders.filter(o => o.id !== id)
+                this.setState({
+                    orders: newOrders
+                })
+            })
+            .catch(e => console.log(e))
+         }
+
     }
 
 

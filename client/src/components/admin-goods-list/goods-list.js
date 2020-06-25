@@ -19,30 +19,51 @@ export default class GoodsList extends React.Component {
     }
 
     removeGood = (id) => {
-        const { goods } = this.state
-        fetch('/api/chocolab/goods/' + id, {
-            method: 'delete'
-        })
-            .then(() => {
-                const newGoods = goods.filter(g => g.id !== id);
-                this.setState({
-                    goods: newGoods
-                })
+
+        let confirmed = window.confirm("Вы уверены что хотите удалить товар?");
+
+        if (confirmed) {
+            const { categoriesAndGoods } = this.state
+            fetch('/api/goods/' + id, {
+                method: 'delete'
             })
-            .catch((e) => console.log(e))
+                .then(async (res) => {
+                    const categoryId = await res.json();
+                    const category = categoriesAndGoods.find(cat => cat.id === categoryId)
+                    const catIdx = categoriesAndGoods.findIndex(cat => cat.id === categoryId)
+                    
+                    const newCategory = {...category}
+                    newCategory.Goods = newCategory.Goods.filter(g => g.id !== id);
+                    const newCatsAndGoods = [
+                        ...categoriesAndGoods.slice(0, catIdx),
+                         newCategory,
+                         ...categoriesAndGoods.slice(catIdx + 1)]
+                         
+                    this.setState({
+                        categoriesAndGoods: newCatsAndGoods
+                    })
+                })
+                .catch((e) => console.log(e))
+        }
     }
 
     removeCateg = (id) => {
-        const {categoriesAndGoods} = this.state;
 
-        fetch('/api/categories/' + id, {
-            method: 'delete'
-        })
-        .then(() => {
-            const newCategoriesAndGoods = categoriesAndGoods.filter(c => c.id !== id);
-            this.setState({categoriesAndGoods: newCategoriesAndGoods})
-        })
-        .catch((e) => console.log(e))
+        let confirmed = window.confirm("Вы уверены что хотите удалить категорию?")
+
+        if (confirmed) {
+            const {categoriesAndGoods} = this.state;
+
+            fetch('/api/categories/' + id, {
+                method: 'delete'
+            })
+            .then(() => {
+                const newCategoriesAndGoods = categoriesAndGoods.filter(c => c.id !== id);
+                this.setState({categoriesAndGoods: newCategoriesAndGoods})
+            })
+            .catch((e) => console.log(e))
+        }
+
     }
 
     changeFilter = (title) => {

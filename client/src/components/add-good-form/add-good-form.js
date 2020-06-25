@@ -52,6 +52,7 @@ export default class AddGoodForm extends React.Component {
             price: 0,
             imageURL: ''
         })
+        alert("Товар добавлен")
     }
 
     handleCatSubmit = event => {
@@ -67,6 +68,7 @@ export default class AddGoodForm extends React.Component {
         this.setState({
             title: ''
         })
+        alert("Категория добавлена")
     }
 
 

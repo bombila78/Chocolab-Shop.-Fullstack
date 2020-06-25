@@ -78,10 +78,11 @@ router.delete('/:id', async (req, res) => {
 
     try {
         const good = await db.Good.findByPk(+req.params.id);
+        const categoryId = good.CategoryId;
 
         await good.destroy();
 
-        res.status(204).json({})
+        res.status(200).json(categoryId)
         
     } catch (e) {
         console.log(e)

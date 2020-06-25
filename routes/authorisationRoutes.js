@@ -10,6 +10,7 @@ router.post('/', async (req, res) => {
         
         const candidate = await db.User.findOne({where: {username: username}})
         .then(user => {
+
             if (user === null) {
                 const notValidName = false
                 res.status(200).json(notValidName)
@@ -24,7 +25,7 @@ router.post('/', async (req, res) => {
         if (candidate) {
             
             const areSame = await bcrypt.compare(password, candidate.password)
-        
+            
             res.status(200).json(areSame)
         } 
 

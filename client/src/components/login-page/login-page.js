@@ -29,9 +29,11 @@ const LoginPage = ({logIn, loggedIn}) => {
 
         axios
             .post('/api/auth/', user)
-            .then((res) => {
+            .then( (res) => {
                 if (res.data) {
-                    logIn()
+                     logIn()
+                    } else {
+                        alert("Login failed")
                     }})
             .catch(e => console.log(e))
         setUsername('')

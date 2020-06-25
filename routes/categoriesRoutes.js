@@ -3,7 +3,6 @@ const router = Router()
 const db = require('../models')
 
 router.get("/all", async (req, res) => {
-    console.log("Got signal")
     try {
         const categories = await db.Category.findAll({
             include: {
