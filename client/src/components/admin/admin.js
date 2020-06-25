@@ -4,11 +4,15 @@ import './style.scss';
 import AddGoodForm from '../add-good-form/add-good-form'
 import GoodsList from '../admin-goods-list/goods-list'
 import OrdersList from '../admin-orders-list/orders-list';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux'
 
-export default class Admin extends React.Component  {
+const Admin = ({loggedIn}) => {
 
-  render() {
+
+    if (!loggedIn) {
+      return <Redirect to="/login" />
+    }
     return (
       <div className="admin-page">
         <Header />
@@ -18,6 +22,10 @@ export default class Admin extends React.Component  {
       </div>
     )
   }
+
+  const mapStateToProps = ({login: {loggedIn}}) => {
+    return {loggedIn}
+} 
   
-}
+export default connect(mapStateToProps)(Admin);
 

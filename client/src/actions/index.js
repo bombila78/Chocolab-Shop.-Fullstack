@@ -45,7 +45,17 @@ const clearCart = () => {
     }
 }
 
+const logIn = () => {
+    return {
+        type: 'LOGGED_IN'
+    }
+}
 
+const logOut = () => {
+    return {
+        type: 'LOGGED_OUT'
+    }
+}
 
 
 export {
@@ -55,5 +65,7 @@ export {
     addToCart,
     removeFromCart,
     deleteFromCart,
-    clearCart
+    clearCart,
+    logIn,
+    logOut
 }

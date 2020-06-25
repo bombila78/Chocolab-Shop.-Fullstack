@@ -56,7 +56,7 @@ const updateCartItems = (cartItems, item, idx) => {
 
 const cart = (state, action) => {
 
-    if (state === undefined) {
+    if (state.cart === undefined) {
         return {
             cartItems: []
         }

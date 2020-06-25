@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {logOut} from '../../actions';
+import {connect} from 'react-redux'
 
-const Header = () => {
-
+const Header = ({logOut}) => {
+   
     return (
         <div className="header">
             <nav className="navbar">
@@ -20,10 +22,21 @@ const Header = () => {
                     <li className="navbar-item">
                         <Link className="nav-link" to="/admin/orders">Заказы</Link>
                     </li>
+                    <li className="navbar-item">
+                        <button className="btn btn-danger" onClick={() => logOut()}>Выйти</button>
+                    </li>
                 </ul>
             </nav>
         </div>
     )
 }
 
-export default Header;
+const mapDispatchToProps = {
+    logOut: logOut
+}
+
+const mapStateToProps = ({}) => {
+    return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

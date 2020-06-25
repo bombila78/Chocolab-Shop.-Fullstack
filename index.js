@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const Routes = require('./routes/routes');
 const db = require('./models')
 
 
@@ -15,6 +14,7 @@ app.use(express.json());
 app.use('/api/categories', require('./routes/categoriesRoutes'))
 app.use('/api/goods', require('./routes/goodsRoutes'))
 app.use('/api/orders', require('./routes/ordersRoutes'))
+app.use('/api/auth', require('./routes/authorisationRoutes'))
 
 app.get('*', (req, res, next) => {
     res.sendFile(path.join(__dirname + '/client/build/index.html'))

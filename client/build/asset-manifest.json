@@ -1,33 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.60aac889.chunk.css",
-    "main.js": "/static/js/main.39b8f8f4.chunk.js",
-    "main.js.map": "/static/js/main.39b8f8f4.chunk.js.map",
+    "main.css": "/static/css/main.41dba857.chunk.css",
+    "main.js": "/static/js/main.e359212c.chunk.js",
+    "main.js.map": "/static/js/main.e359212c.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.83177453.js",
     "runtime-main.js.map": "/static/js/runtime-main.83177453.js.map",
-    "static/js/2.9402248a.chunk.js": "/static/js/2.9402248a.chunk.js",
-    "static/js/2.9402248a.chunk.js.map": "/static/js/2.9402248a.chunk.js.map",
+    "static/js/2.9da90b32.chunk.js": "/static/js/2.9da90b32.chunk.js",
+    "static/js/2.9da90b32.chunk.js.map": "/static/js/2.9da90b32.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.59c765f8e84b646bc8ac79e82dd82ff1.js": "/precache-manifest.59c765f8e84b646bc8ac79e82dd82ff1.js",
+    "precache-manifest.08a437cc4925327d1e20ebfd135d894f.js": "/precache-manifest.08a437cc4925327d1e20ebfd135d894f.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.60aac889.chunk.css.map": "/static/css/main.60aac889.chunk.css.map",
-    "static/js/2.9402248a.chunk.js.LICENSE.txt": "/static/js/2.9402248a.chunk.js.LICENSE.txt",
-    "static/media/style.scss": "/static/media/intro_small_3.16471b5a.jpg",
-    "static/media/box_1.png": "/static/media/box_1.7eb07a33.png",
-    "static/media/box_2.jpg": "/static/media/box_2.2098aaaf.jpg",
-    "static/media/box_3.jpg": "/static/media/box_3.7b26df75.jpg",
-    "static/media/choco_1.jpg": "/static/media/choco_1.56f2da73.jpg",
-    "static/media/choco_2.jpg": "/static/media/choco_2.d1587c3a.jpg",
-    "static/media/choco_3.jpg": "/static/media/choco_3.6b003d0f.jpg",
-    "static/media/ingred-1.jpg": "/static/media/ingred-1.68a07a6c.jpg",
-    "static/media/ingred_2.jpg": "/static/media/ingred_2.7e422d25.jpg",
-    "static/media/ingred_3.jpg": "/static/media/ingred_3.35e4c58f.jpg",
-    "static/media/ingred_4.jpg": "/static/media/ingred_4.312768ef.jpg"
+    "static/css/main.41dba857.chunk.css.map": "/static/css/main.41dba857.chunk.css.map",
+    "static/js/2.9da90b32.chunk.js.LICENSE.txt": "/static/js/2.9da90b32.chunk.js.LICENSE.txt",
+    "static/media/style.scss": "/static/media/intro_small_3.16471b5a.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.83177453.js",
-    "static/js/2.9402248a.chunk.js",
-    "static/css/main.60aac889.chunk.css",
-    "static/js/main.39b8f8f4.chunk.js"
+    "static/js/2.9da90b32.chunk.js",
+    "static/css/main.41dba857.chunk.css",
+    "static/js/main.e359212c.chunk.js"
   ]
 }
