@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a1d52f9-982a-415e-a569-05151e2fdbf3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/categoriesRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/categoriesRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/build/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/build/precache-manifest.8c91bae64ff40d83a87617f8432bc410.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/build/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/build/service-worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/build/static/js/main.05fe5378.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/build/static/js/main.05fe5378.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/login-page/login-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/login-page/login-page.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,19 +36,32 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4a1d52f9-982a-415e-a569-05151e2fdbf3" name="Default Changelist" comment="" />
+      <created>1595442517449</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1595442517449</updated>
+      <workItem from="1595442519537" duration="1774000" />
+    </task>
+    <servers />
+  </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
     <state width="1398" height="2" key="GridCell.Tab.0.bottom" timestamp="1592687952856">
@@ -58,9 +80,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1398" height="2" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1592687952856" />
-    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1592662313895">
-      <screen x="0" y="23" width="1440" height="877" />
+    <state x="385" y="195" width="670" height="694" key="search.everywhere.popup" timestamp="1595444820510">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="385" y="195" width="670" height="694" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1595444820510" />
     <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1592662313895" />
   </component>
 </project>

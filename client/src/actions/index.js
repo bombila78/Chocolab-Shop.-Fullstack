@@ -46,6 +46,7 @@ const clearCart = () => {
 }
 
 const logIn = () => {
+    console.log('loged in')
     return {
         type: 'LOGGED_IN'
     }

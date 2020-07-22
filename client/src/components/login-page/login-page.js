@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
@@ -10,28 +10,24 @@ const LoginPage = ({logIn, loggedIn}) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('');
     // const [popup, setPopup] = useState(false);
-
+    // useEffect(() => window.alert(loggedIn), [loggedIn])
     const onUsernameChange = event => setUsername(event.target.value);
     const onPasswordChange = event => setPassword(event.target.value);
-
-    // const onClosePopup = () => setPopup(false)
     
-    const submitLogin = () => {
+    const submitLogin = (e) => {
+        e.preventDefault()
 
         const user = {
             username,
             password
         }
-        // const onFailLogin = () => {
-        //     setPopup(true);
-        //     setTimeout(console.log('5 secs are gone'),5000)
-        // }
 
         axios
             .post('/api/auth/', user)
             .then( (res) => {
                 if (res.data) {
                      logIn()
+
                     } else {
                         alert("Login failed")
                     }})
@@ -57,18 +53,6 @@ const LoginPage = ({logIn, loggedIn}) => {
                         <button type="submit" className="btn btn-primary">Авторизироваться</button>
                     </form>
                 </div>
-                {/* <div className="login-page popup" hidden={!popup}>
-                    <div className="popup__body">
-                        <div className="popup__content">
-                            <div className="popup__text">
-                                Неверные данные
-                            </div>
-                            <div className="popup__button">
-                                <button className="btn btn-danger" onClick={onClosePopup}>OK</button>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
             </div>
         )
     }
